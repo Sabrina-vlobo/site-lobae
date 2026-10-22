@@ -1,0 +1,29 @@
+# LOBAE°
+
+> LOBAE é um estúdio de uma pessoa só (Sabrina) que desenha e programa sites e landing pages sob medida para pequenos negócios no Brasil. Os sites são feitos em código (sem construtor), abrem rápido no celular, têm botão de WhatsApp e SEO básico, e ficam no ar em 7 a 14 dias. Atendimento direto pelo WhatsApp.
+
+## Serviços e preços (lançamento, 3 primeiras vagas)
+
+- **Vitrine (landing page)**: R$ 390 (de R$ 1.200). 1 página com até 6 seções, botão de WhatsApp, versão para celular, SEO básico e 2 rodadas de ajuste. No ar em 7 dias.
+- **Vitrine+ (site institucional)**: R$ 490 (de R$ 2.200). Até 4 páginas (início, serviços, sobre e contato) e tudo o que tem na Vitrine. No ar em 14 dias.
+- **Raio-x**: grátis. Vídeo de 2 a 3 minutos apontando 3 problemas do site, Google ou Instagram do negócio. Entrega em 48h, sem compromisso.
+- **Plano Zelador (opcional)**: R$ 59/mês para cuidar do site no ar (domínio, SSL e ajustes mensais).
+
+## Como funciona
+
+1. O cliente conta do negócio pelo WhatsApp.
+2. A Sabrina desenha e programa o site.
+3. O site vai ao ar no prazo.
+
+Pagamento via Pix: 50% para começar e 50% na entrega. O domínio fica no nome do cliente. Sem mensalidade obrigatória: a hospedagem é grátis.
+
+## Contato
+
+- Site: https://lobae.com.br/
+- WhatsApp: https://wa.me/5511973006991
+- Instagram: https://www.instagram.com/lobae.creative/
+- E-mail: contato@lobae.com.br
+
+## Portfólio
+
+- [Volta, site de bike elétrica](https://volta-liart.vercel.app/)
