@@ -27,7 +27,7 @@ const DORES = [
 
 const PROJETOS = [
   { nome: "Volta", tipo: "Site · bike elétrica", destaque: true, href: "https://volta-liart.vercel.app/", status: "Ver no ar ↗" },
-  { nome: "Veio Marcenaria", tipo: "Projeto-conceito · marcenaria", destaque: false, href: undefined, status: "Em produção" },
+  { nome: "Traço Arquitetura", tipo: "Projeto-conceito · arquitetura", destaque: false, href: undefined, status: "Em produção" },
   { nome: "Clínica Âmbar", tipo: "Projeto-conceito · odontologia", destaque: false, href: undefined, status: "Em produção" },
 ];
 
@@ -303,7 +303,7 @@ export default function Home() {
                     {p.destaque ? (
                       <CaseVideo src="/cases/volta" poster="/cases/volta-poster.jpg" label="Navegação pelo site da Volta, e-bike urbana" />
                     ) : (
-                      <ConceptPreview variant={p.nome === "Veio Marcenaria" ? "veio" : "ambar"} />
+                      <ConceptPreview variant={p.nome === "Traço Arquitetura" ? "traco" : "ambar"} />
                     )}
                   </div>
                   <div className="case-meta">

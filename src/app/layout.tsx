@@ -4,8 +4,9 @@ import "@fontsource/host-grotesk/500.css";
 import "@fontsource/host-grotesk/700.css";
 import "@fontsource/host-grotesk/800.css";
 import "@fontsource/silkscreen/400.css";
-// Fontes dos cases fictícios (Veio Marcenaria e Clínica Âmbar)
-import "@fontsource/gloock/latin-400.css";
+// Fontes dos cases fictícios (Traço Arquitetura e Clínica Âmbar)
+import "@fontsource/hanken-grotesk/latin-500.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/bricolage-grotesque/latin-400.css";
 import "@fontsource/bricolage-grotesque/latin-600.css";
 import "./globals.css";

@@ -30,12 +30,14 @@ export function BeforeAfter() {
               <i />
               âmbar
             </span>
-            <span className="ambarsite-links">Tratamentos · A clínica · Dúvidas</span>
+            <span className="ambarsite-links">Tratamentos · Resultados · Dúvidas</span>
           </div>
           <span className="ambarsite-kicker">Odontologia estética</span>
-          <p className="ambarsite-title">Seu sorriso, sem aquele frio na barriga.</p>
+          <p className="ambarsite-title">
+            Onde <span>o seu sorriso</span> ganha cuidado e confiança
+          </p>
           <p className="ambarsite-text">Avaliação completa na primeira consulta, sem pressa. Agende em 2 cliques.</p>
-          <span className="ambarsite-btn">Agendar pelo WhatsApp</span>
+          <span className="ambarsite-btn">Agendar avaliação →</span>
         </div>
       </div>
 

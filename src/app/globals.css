@@ -2568,211 +2568,175 @@ main > section:not(.section--tight) {
 }
 
 /* =========================================================
-   v6 cases fictícios: Veio Marcenaria e Clínica Âmbar
+   v6 cases fictícios: Traço Arquitetura e Clínica Âmbar
+   (heros no Figma; fotos do Unsplash)
    ========================================================= */
 :root {
-  --veio-pedra: #e6e3de;
-  --veio-nogueira: #3a2b22;
-  --veio-carvalho: #c9a27a;
-  --veio-grafite: #22211f;
-  --ambar-nude: #f1e4dd;
+  --traco-ink: #0b1b33;
   --ambar-ambar: #c8742b;
-  --ambar-mel: #f0c27b;
-  --ambar-cacau: #3b2620;
-  --ambar-leite: #fffaf6;
+  --ambar-ink: #231915;
+  --ambar-ceu: #d6e7ff;
 }
 
 /* ---------- Prévia no card ---------- */
 .cp {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 6%;
-  padding: 7% 7% 0;
+  overflow: hidden;
   text-align: left;
   container-type: inline-size;
 }
-.cp-text {
+.cp img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Traço Arquitetura: foto cheia, véu escuro, nav em caixas brancas */
+.cp--traco {
+  color: #fff;
+  font-family: "Hanken Grotesk", var(--font);
+}
+.cp--traco picture {
+  position: absolute;
+  inset: 0;
+}
+.cp--traco img {
+  object-position: 70% 40%;
+}
+.cp--traco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(35deg, rgb(5 15 40 / 0.75), rgb(5 15 40 / 0.25) 55%, rgb(5 15 40 / 0) 85%);
+}
+.cp-top {
+  position: absolute;
+  z-index: 1;
+  top: 5cqw;
+  left: 5cqw;
+  display: flex;
+  align-items: center;
+  gap: 4cqw;
+}
+.cp-mark {
+  font-size: clamp(18px, 7cqw, 36px);
+  font-weight: 500;
+  line-height: 1;
+}
+.cp-nav {
+  display: flex;
+  gap: 0.6cqw;
+}
+.cp-nav i {
+  padding: 1.2cqw 2.4cqw;
+  border-radius: 2px;
+  background: #fff;
+  color: var(--traco-ink);
+  font: normal clamp(7px, 2.1cqw, 12px) / 1 "IBM Plex Mono", monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.cp--traco .cp-title {
+  position: absolute;
+  z-index: 1;
+  left: 5cqw;
+  right: 14cqw;
+  bottom: 5cqw;
+  font-size: clamp(18px, 7.6cqw, 42px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+/* Clínica Âmbar: azul-claro, nav em pílula, título central, foto em card */
+.cp--ambar {
   display: flex;
   flex-direction: column;
-  gap: 8cqw;
-  padding-bottom: 7cqw;
-}
-.cp-brand {
-  display: inline-flex;
   align-items: center;
-  gap: 1.4cqw;
-}
-.cp-title {
-  font-size: clamp(16px, 6.4cqw, 34px);
-  line-height: 1.02;
-}
-.cp-btn {
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 2.4cqw 4cqw;
-  border-radius: 999px;
-  font-size: clamp(10px, 2.6cqw, 14px);
-  font-weight: 600;
-}
-.cp-visual {
-  position: relative;
-  align-self: stretch;
-}
-/* Veio */
-.cp--veio {
-  background: var(--veio-pedra);
-  color: var(--veio-nogueira);
-}
-.cp--veio .cp-brand,
-.cp--veio .cp-title {
-  font-family: "Gloock", Georgia, serif;
-  font-weight: 400;
-}
-.cp--veio .cp-brand {
-  font-size: clamp(14px, 4.6cqw, 24px);
-}
-.cp--veio .cp-title {
-  letter-spacing: -0.015em;
-}
-.cp--veio .cp-btn {
-  background: var(--veio-nogueira);
-  color: var(--veio-pedra);
-}
-.cp--veio .cp-visual {
-  padding-top: 6cqw;
-}
-.cp-cota {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  gap: 2cqw;
-  font-size: clamp(9px, 2.2cqw, 12px);
-  color: rgb(34 33 31 / 0.7);
-}
-.cp-cota::before,
-.cp-cota::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgb(34 33 31 / 0.4);
-}
-.cp-wood {
-  height: 100%;
-  border-radius: 3px 3px 0 0;
-  /* veio de madeira desenhado em CSS, no lugar da foto até ela chegar */
-  background:
-    repeating-linear-gradient(92deg, rgb(255 255 255 / 0) 0 7px, rgb(255 255 255 / 0.08) 7px 9px, rgb(58 43 34 / 0.06) 9px 14px),
-    repeating-linear-gradient(88deg, rgb(58 43 34 / 0) 0 22px, rgb(58 43 34 / 0.09) 22px 24px),
-    linear-gradient(160deg, #d8b48c, var(--veio-carvalho) 55%, #b48a5f);
-}
-.cp-swatches {
-  position: absolute;
-  bottom: 5cqw;
-  right: 4cqw;
-  display: flex;
-  gap: 1.6cqw;
-  padding: 1.6cqw;
-  border-radius: 999px;
-  background: rgb(230 227 222 / 0.92);
-}
-.cp-swatches i {
-  width: 4.4cqw;
-  height: 4.4cqw;
-  border-radius: 50%;
-  background: var(--veio-carvalho);
-  box-shadow: inset 0 0 0 1px rgb(34 33 31 / 0.12);
-}
-.cp-swatches i:first-child {
-  outline: 1px solid var(--veio-nogueira);
-  outline-offset: 2px;
-}
-.cp-swatches i:nth-child(2) {
-  background: #5b3e2b;
-}
-.cp-swatches i:nth-child(3) {
-  background: #d9d6d0;
-}
-/* Âmbar */
-.cp--ambar {
-  background: var(--ambar-nude);
-  color: var(--ambar-cacau);
+  gap: 4cqw;
+  padding-top: 4cqw;
+  background: linear-gradient(180deg, #fafcff, var(--ambar-ceu));
+  color: var(--ambar-ink);
   font-family: "Bricolage Grotesque", var(--font);
 }
-.cp--ambar .cp-brand {
-  font-size: clamp(14px, 4.4cqw, 22px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+.cp-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 72%;
+  padding: 1.2cqw 1.2cqw 1.2cqw 3cqw;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgb(51 89 153 / 0.08);
+  font-size: clamp(8px, 2.4cqw, 13px);
 }
-.cp--ambar .cp-brand i {
-  width: 2.4cqw;
-  height: 2.4cqw;
+.cp-pill b {
+  display: flex;
+  gap: 0.6cqw;
+  font-weight: 600;
+}
+.cp-pill b i {
+  width: 1.2cqw;
+  height: 1.2cqw;
   border-radius: 50%;
   background: var(--ambar-ambar);
 }
+.cp-pill em {
+  padding: 1cqw 2.6cqw;
+  border-radius: 999px;
+  background: var(--ambar-ink);
+  color: #fff;
+  font-style: normal;
+}
 .cp--ambar .cp-title {
-  font-weight: 600;
+  font-size: clamp(16px, 5.6cqw, 32px);
+  line-height: 1.04;
   letter-spacing: -0.035em;
+  text-align: center;
 }
-.cp--ambar .cp-btn {
-  background: var(--ambar-ambar);
-  color: var(--ambar-leite);
+.cp--ambar .cp-title span {
+  color: var(--ambar-ambar);
 }
-.cp-arch {
-  height: 100%;
-  border-radius: 999px 999px 0 0;
-  background: linear-gradient(180deg, var(--ambar-mel), var(--ambar-ambar));
+.cp-photo {
+  flex: 1;
+  width: 52%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 3cqw 3cqw 0 0;
 }
 
 /* ---------- Antes e depois: site da Clínica Âmbar ---------- */
 .ba-after {
-  background: var(--ambar-nude);
-  color: var(--ambar-cacau);
+  background: linear-gradient(180deg, #fafcff, var(--ambar-ceu));
+  color: var(--ambar-ink);
 }
 .ba-after .ba-tag-right {
-  border-color: rgb(59 38 32 / 0.4);
-  color: var(--ambar-cacau);
-}
-.ambarsite {
-  font-family: "Bricolage Grotesque", var(--font);
-}
-.ambarsite::after {
-  /* arco âmbar decorativo, como no hero da clínica */
-  content: "";
-  position: absolute;
-  right: -8%;
-  bottom: -30%;
-  width: 46%;
-  aspect-ratio: 3 / 4;
-  border-radius: 999px 999px 0 0;
-  background: linear-gradient(180deg, var(--ambar-mel), var(--ambar-ambar));
-  opacity: 0.35;
-  z-index: -1;
+  border-color: rgb(35 25 21 / 0.4);
+  color: var(--ambar-ink);
 }
 .ambarsite {
   isolation: isolate;
   overflow: hidden;
+  font-family: "Bricolage Grotesque", var(--font);
 }
 .ambarsite-brand {
   display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 4px;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 .ambarsite-brand i {
-  width: 9px;
-  height: 9px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--ambar-ambar);
 }
 .ambarsite-links {
-  color: rgb(59 38 32 / 0.6);
+  color: rgb(35 25 21 / 0.6);
 }
 .ambarsite-kicker {
   font-size: 14px;
@@ -2780,15 +2744,18 @@ main > section:not(.section--tight) {
   color: var(--ambar-ambar);
 }
 .ambarsite-title {
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.035em;
 }
+.ambarsite-title span {
+  color: var(--ambar-ambar);
+}
 .ambarsite-text {
-  color: rgb(59 38 32 / 0.72);
+  color: rgb(35 25 21 / 0.65);
 }
 .ambarsite-btn {
   background: var(--ambar-ambar);
-  color: var(--ambar-leite);
+  color: #fff;
   font-weight: 600;
 }
 
@@ -2862,4 +2829,42 @@ main > section:not(.section--tight) {
   cursor: pointer;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+}
+/* Card baixo e largo (desktop): topo mais compacto para a foto aparecer */
+.cp--ambar {
+  gap: 2.6cqw;
+  padding-top: 3cqw;
+}
+.cp--ambar .cp-title {
+  font-size: clamp(14px, 4.8cqw, 30px);
+}
+.cp-photo {
+  display: block;
+  flex: 1 1 0;
+  width: 46%;
+}
+/* Layout fixo da prévia da clínica: topo, título e foto encostada embaixo */
+.cp--ambar {
+  justify-content: flex-start;
+  padding-top: 4.5cqw;
+  gap: 3.4cqw;
+}
+.cp--ambar .cp-photo {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 44%;
+  height: 40%;
+  transform: translateX(-50%);
+}
+@container (max-width: 380px) {
+  .cp--ambar .cp-photo {
+    width: 64%;
+    height: 50%;
+  }
+}
+/* Espaçamento do próprio .cp não pode usar cqw (resolveria no contêiner de fora) */
+.cp--ambar {
+  padding-top: 4%;
+  gap: clamp(8px, 1.1vw, 16px);
 }
