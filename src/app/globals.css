@@ -3436,3 +3436,43 @@ main > section:not(.section--tight) {
     font-size: 15px;
   }
 }
+
+/* ---------- v8.2 barra de rolagem e seleção com a cara da LOBAE ---------- */
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cobalto) var(--tinta);
+}
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--tinta);
+}
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  background: var(--cobalto);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--laranja-sinal);
+}
+/* Carrosséis do celular (trabalhos e preços): barra escondida, o gesto de arrastar já basta */
+.cases::-webkit-scrollbar,
+.plans::-webkit-scrollbar {
+  display: none;
+}
+.cases,
+.plans {
+  scrollbar-width: none;
+}
+/* Texto selecionado */
+::selection {
+  background: var(--laranja-sinal);
+  color: var(--tinta);
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
