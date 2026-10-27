@@ -2868,3 +2868,571 @@ main > section:not(.section--tight) {
   padding-top: 4%;
   gap: clamp(8px, 1.1vw, 16px);
 }
+
+/* =========================================================
+   v7 refinamento: mobile, clareza e impacto
+   ========================================================= */
+
+/* ---------- Hero: trabalhos reais empilhados ---------- */
+.hero-end {
+  height: 0;
+}
+.hero-work {
+  flex: none;
+  width: clamp(380px, 38vw, 560px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hw-stack {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin-top: 8%;
+  margin-right: 10%;
+}
+.hw-card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--tinta);
+  box-shadow:
+    inset 0 0 0 1px rgb(241 242 246 / 0.14),
+    0 30px 60px -24px rgb(11 14 42 / 0.6);
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.9s var(--ease),
+    opacity 0.9s var(--ease);
+}
+.hw-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+.hw-card[data-pos="0"] {
+  z-index: 3;
+  transform: none;
+}
+.hw-card[data-pos="1"] {
+  z-index: 2;
+  transform: translate(7%, -9%) scale(0.92);
+  opacity: 0.55;
+}
+.hw-card[data-pos="2"] {
+  z-index: 1;
+  transform: translate(14%, -18%) scale(0.84);
+  opacity: 0.25;
+}
+.hw-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-right: 10%;
+}
+.hw-caption p {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: rgb(241 242 246 / 0.75);
+}
+.hw-caption strong {
+  font-size: 17px;
+  color: var(--branco-frio);
+}
+.hw-dots {
+  display: flex;
+}
+.hw-dots button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.hw-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(241 242 246 / 0.4);
+  transition:
+    width 0.4s var(--ease),
+    background-color 0.4s var(--ease);
+}
+.hw-dots [aria-selected="true"] i {
+  width: 22px;
+  background: var(--laranja-sinal);
+}
+@media (max-width: 899px) {
+  .hero-work {
+    width: 100%;
+    gap: 6px;
+  }
+  .hw-stack {
+    margin-top: 6%;
+    margin-right: 9%;
+  }
+  .hw-caption {
+    margin-right: 0;
+  }
+  .hw-caption p {
+    font-size: 13px;
+  }
+  .hw-caption strong {
+    font-size: 15px;
+  }
+}
+/* Celulares baixos: só o essencial no hero */
+@media (max-width: 899px) and (max-height: 780px) {
+  .hero-work {
+    display: none;
+  }
+}
+
+/* ---------- Setas que deslizam no hover ---------- */
+.btn .arr {
+  display: inline-block;
+  transition: transform 0.3s var(--ease);
+}
+@media (hover: hover) {
+  .btn:hover .arr {
+    transform: translateX(4px);
+  }
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Contato fixo ---------- */
+.sticky-wa {
+  gap: 10px;
+}
+@media (max-width: 899px) {
+  .sticky-wa {
+    left: 16px;
+    right: 16px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    justify-content: center;
+    min-height: 52px;
+    font-size: 16px;
+  }
+}
+
+/* ---------- Áreas de toque (mínimo 44px) ---------- */
+.menu summary {
+  width: 44px;
+  height: 44px;
+}
+.case-link,
+.footer-contacts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ---------- Legibilidade: nada abaixo de 12px ---------- */
+.plan .tag,
+.price-off,
+.footer-contacts .pixel,
+.footer-copy,
+.swipe-hint,
+.ba-tag-left,
+.ba-tag-right,
+.case-type {
+  font-size: 12px;
+}
+
+/* ---------- Menu do celular: painel grande, links em sequência ---------- */
+@media (max-width: 899px) {
+  .nav-shell .nav {
+    position: relative;
+  }
+  .menu {
+    position: static;
+  }
+  .menu-panel {
+    left: 0;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 0;
+    gap: 4px;
+    padding: 14px;
+    border-radius: 24px;
+    background: var(--tinta);
+    box-shadow: 0 24px 60px -12px rgb(11 14 42 / 0.6);
+  }
+  .menu-panel a {
+    padding: 16px 14px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--branco-frio);
+  }
+  .menu-panel .menu-wa {
+    margin-top: 10px;
+    padding: 18px;
+    border-radius: 999px;
+    font-size: 18px;
+    color: var(--tinta);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu[open] .menu-panel {
+      animation: menu-in 0.35s var(--ease) both;
+    }
+    .menu[open] .menu-panel a {
+      animation: menu-item 0.5s var(--ease) both;
+    }
+    .menu[open] .menu-panel a:nth-child(2) {
+      animation-delay: 60ms;
+    }
+    .menu[open] .menu-panel a:nth-child(3) {
+      animation-delay: 120ms;
+    }
+    .menu[open] .menu-panel a:nth-child(4) {
+      animation-delay: 180ms;
+    }
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- O problema: ícones no lugar dos números ---------- */
+.card-icon {
+  color: var(--laranja-sinal);
+}
+
+/* ---------- Feito pra vender: bento ---------- */
+.bento {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 20px;
+}
+.bento-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(24px, 2.4vw, 32px);
+  border-radius: var(--radius);
+  background: rgb(11 14 42 / 0.04);
+  border: 1px solid rgb(11 14 42 / 0.08);
+}
+.bento-item h3 {
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.15;
+}
+.bento-item p {
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgb(11 14 42 / 0.68);
+}
+.bento-icon {
+  margin-bottom: 6px;
+  color: var(--cobalto);
+}
+.bento-item--whats {
+  grid-row: span 2;
+  background: var(--cobalto);
+  border-color: transparent;
+  color: var(--branco-frio);
+}
+.bento-item--whats h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+}
+.bento-item--whats p {
+  max-width: 34ch;
+  color: rgb(241 242 246 / 0.85);
+}
+.bento-item--whats .bento-icon {
+  color: var(--branco-frio);
+}
+.bento-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.bento-bubble {
+  max-width: 92%;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--branco-frio);
+  color: var(--tinta);
+  font-size: 15px;
+}
+.bento-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--laranja-sinal);
+  color: var(--tinta);
+  font-size: 15px;
+  font-weight: 700;
+}
+.bento-item--medidos {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  background: var(--tinta);
+  border-color: transparent;
+  color: var(--branco-frio);
+}
+.bento-item--medidos .bento-icon {
+  flex: none;
+  margin: 0;
+  color: var(--laranja-sinal);
+}
+.bento-item--medidos h3 {
+  flex: none;
+}
+.bento-item--medidos p {
+  color: var(--nevoa);
+}
+@media (max-width: 899px) {
+  .bento {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .bento-item {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .bento-item h3 {
+    font-size: 17px;
+  }
+  .bento-item p {
+    font-size: 14px;
+  }
+  .bento-item--whats {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .bento-item--whats h3 {
+    font-size: 24px;
+  }
+  .bento-item--medidos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* ---------- FAQ em acordeão ---------- */
+.faq-item {
+  gap: 0;
+  padding: 0;
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  padding: 22px 26px;
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-plus {
+  flex: none;
+  color: var(--cobalto);
+  transition: transform 0.3s var(--ease);
+}
+.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+.faq-item p {
+  padding: 0 26px 24px;
+}
+@media (max-width: 899px) {
+  .faq-item summary {
+    padding: 18px 20px;
+  }
+  .faq-item p {
+    padding: 0 20px 20px;
+  }
+}
+
+/* ---------- CTA final sem vazio no celular ---------- */
+@media (max-width: 899px) {
+  .final.section--screen {
+    min-height: auto;
+  }
+}
+
+/* ---------- Antes e depois no celular: texto compacto ---------- */
+@media (max-width: 899px) {
+  .ambarsite-text,
+  .ambarsite-links {
+    display: none;
+  }
+  .ambarsite-title {
+    font-size: clamp(22px, 7.4cqw, 28px);
+  }
+}
+/* ajustes finos v7 */
+.faq {
+  align-items: start;
+}
+.hw-dots button {
+  width: 44px;
+}
+.hero-work {
+  width: clamp(400px, 40vw, 600px);
+}
+@media (max-width: 899px) {
+  .hero-work {
+    width: 100%;
+  }
+  .sticky-wa {
+    left: 50%;
+    right: auto;
+    padding: 14px 24px;
+    transform: translate(-50%, 16px);
+  }
+  .sticky-wa.is-visible {
+    transform: translate(-50%, 0);
+  }
+}
+.sticky-wa {
+  white-space: nowrap;
+}
+
+/* =========================================================
+   v8 celular: sem empilhamento, entrada suave das seções
+   ========================================================= */
+@media (max-width: 899px) {
+  /* rolagem normal: nada gruda, escurece ou encolhe */
+  [data-stack] {
+    position: relative;
+    top: auto;
+  }
+  main > section:not(.section--tight) {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .js-scrub [data-stack]::before {
+    display: none;
+  }
+  .js-scrub [data-stack] > .wrap {
+    transform: none;
+  }
+}
+/* Cada seção se abre como um cartão e o conteúdo desliza de baixo para cima,
+   acompanhando a rolagem (animação ligada ao scroll, sem JavaScript). */
+@media (max-width: 899px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    main > section {
+      animation: sec-abre linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+    main > section > .wrap {
+      animation: sec-sobe linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 70%;
+    }
+  }
+}
+@keyframes sec-abre {
+  from {
+    clip-path: inset(5% 4% 0 4% round 28px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 0);
+  }
+}
+@keyframes sec-sobe {
+  from {
+    opacity: 0.4;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- v8.1 menu do celular mais sutil ---------- */
+@media (max-width: 899px) {
+  .menu-panel {
+    top: calc(100% + 8px);
+    gap: 0;
+    padding: 6px;
+    border-radius: 20px;
+    background: rgb(11 14 42 / 0.94);
+    border: 1px solid rgb(241 242 246 / 0.1);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.06),
+      0 16px 40px -16px rgb(11 14 42 / 0.5);
+  }
+  .menu-panel a {
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: rgb(241 242 246 / 0.9);
+  }
+  .menu-panel a + a:not(.menu-wa) {
+    box-shadow: inset 0 1px 0 rgb(241 242 246 / 0.07);
+  }
+  .menu-panel a:active {
+    background: rgb(241 242 246 / 0.06);
+  }
+  .menu-panel .menu-wa {
+    margin: 6px 0 0;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--tinta);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu[open] .menu-panel {
+      animation: menu-sutil 0.22s var(--ease) both;
+    }
+    .menu[open] .menu-panel a {
+      animation: none;
+    }
+  }
+}
+@keyframes menu-sutil {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@media (max-width: 899px) {
+  .menu-panel {
+    background: var(--tinta);
+  }
+  .menu-panel .menu-wa {
+    background: var(--branco-frio);
+    color: var(--tinta);
+    font-size: 15px;
+  }
+}

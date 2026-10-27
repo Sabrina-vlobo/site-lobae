@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Slider antes/depois: arraste (ou use as setas do teclado) para comparar.
 export function BeforeAfter() {
   const [pos, setPos] = useState(50);
+
+  // No celular o lado "Depois" começa maior, para o site caber sem espremer o texto
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 899px)").matches) setPos(32);
+  }, []);
 
   return (
     <div className="ba" style={{ ["--pos" as string]: `${pos}%` }}>
@@ -37,7 +42,7 @@ export function BeforeAfter() {
             Onde <span>o seu sorriso</span> ganha cuidado e confiança
           </p>
           <p className="ambarsite-text">Avaliação completa na primeira consulta, sem pressa. Agende em 2 cliques.</p>
-          <span className="ambarsite-btn">Agendar avaliação →</span>
+          <span className="ambarsite-btn">Agendar avaliação</span>
         </div>
       </div>
 
@@ -53,7 +58,7 @@ export function BeforeAfter() {
         value={pos}
         onChange={(e) => setPos(Number(e.target.value))}
         aria-label="Arraste para comparar a página de links com o site"
-        aria-valuetext={`${100 - pos}% página de links, ${pos}% site`}
+        aria-valuetext={`${pos}% página de links, ${100 - pos}% site`}
       />
     </div>
   );

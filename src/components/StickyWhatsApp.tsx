@@ -1,28 +1,32 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { MSG, whatsappLink } from "@/lib/site";
 
-// Botão fixo de WhatsApp: aparece depois que a pessoa passa do hero
-// e some quando o CTA final está na tela.
+// Contato fixo: aparece depois do hero e some quando o CTA final está na tela.
+// No celular vira uma barra compacta no rodapé; no desktop, uma pílula no canto.
+// O hero é "grudento" (empilhamento), então medimos por um marcador logo depois dele.
 export function StickyWhatsApp() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("inicio");
+    const marker = document.getElementById("depois-do-hero");
     const final = document.getElementById("contato");
-    if (!hero) return;
+    if (!marker) return;
     let pastHero = false;
     let atFinal = false;
-    const update = () => setShow(pastHero && !atFinal);
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.target === hero) pastHero = !e.isIntersecting;
-        if (e.target === final) atFinal = e.isIntersecting;
-      }
-      update();
-    });
-    io.observe(hero);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.target === marker) pastHero = !e.isIntersecting && e.boundingClientRect.top < 0;
+          if (e.target === final) atFinal = e.isIntersecting;
+        }
+        setShow(pastHero && !atFinal);
+      },
+      { threshold: 0 },
+    );
+    io.observe(marker);
     if (final) io.observe(final);
     return () => io.disconnect();
   }, []);
@@ -36,8 +40,9 @@ export function StickyWhatsApp() {
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
     >
-      Chamar no WhatsApp
-      <span className="sr-only"> (abre em nova aba)</span>
+      <WhatsappLogo size={20} weight="regular" aria-hidden="true" />
+      Entrar em contato
+      <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
     </a>
   );
 }

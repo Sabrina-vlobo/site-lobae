@@ -5,21 +5,34 @@ import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { Reveal } from "@/components/Reveal";
 import { CaseVideo } from "@/components/CaseVideo";
 import { ConceptPreview } from "@/components/ConceptPreview";
+import { HeroWork } from "@/components/HeroWork";
+import {
+  ChartLineUp,
+  ChatsCircle,
+  GoogleLogo,
+  Lightning,
+  LinkSimple,
+  MagnifyingGlass,
+  Path,
+  Plus,
+  SealCheck,
+  WhatsappLogo,
+} from "@phosphor-icons/react/dist/ssr";
 import { EMAIL, INSTAGRAM_URL, MSG, SITE_DESCRIPTION, SITE_NAME, SITE_URL, WHATSAPP_NUMBER, whatsappLink } from "@/lib/site";
 
 const DORES = [
   {
-    n: "01",
+    Icon: ChatsCircle,
     t: "“Quanto custa?” pela 30ª vez",
     b: "Preço, endereço, horário e serviços. Tudo o que você repete no direct pode morar num lugar só.",
   },
   {
-    n: "02",
+    Icon: MagnifyingGlass,
     t: "No Google, aparece o concorrente",
     b: "Quem procura seu serviço às 23h escolhe quem tem site. Às vezes nem chega a ver o seu Instagram.",
   },
   {
-    n: "03",
+    Icon: LinkSimple,
     t: "Link na bio não é vitrine",
     b: "Linktree e destaques ajudam, mas não passam a confiança de uma marca. Um site passa.",
   },
@@ -31,14 +44,14 @@ const PROJETOS = [
   { nome: "Clínica Âmbar", tipo: "Projeto-conceito · odontologia", destaque: false, href: undefined, status: "Em produção" },
 ];
 
-// [número, título, texto completo (desktop), texto curto (celular)]
+// Feito pra vender: bento com 1 destaque (WhatsApp), 4 blocos e 1 faixa larga
 const RECURSOS = [
-  ["01", "WhatsApp a um toque", "Botão fixo na tela, com mensagem pronta. O cliente chama sem precisar procurar.", "Botão fixo, com mensagem pronta."],
-  ["02", "Abre rápido no celular", "Quem espera carregar desiste. Código leve, sem construtor pesando a página.", "Código leve, sem construtor pesando."],
-  ["03", "Encontrado no Google", "SEO básico: título, descrição e uma estrutura que o Google entende.", "SEO básico que o Google entende."],
-  ["04", "Um caminho só", "Cada seção leva a uma ação: chamar, agendar ou reservar. Nada de distração.", "Cada seção leva a uma ação."],
-  ["05", "Prova que convence", "Avaliações, fotos reais e depoimentos no ponto em que o cliente decide.", "Avaliações e fotos reais na hora certa."],
-  ["06", "Cliques medidos", "Você sabe quantas pessoas visitaram e quantas chamaram no WhatsApp.", "Visitas e cliques no WhatsApp."],
+  { id: "whats", Icon: WhatsappLogo, t: "WhatsApp a um toque", b: "Botão fixo na tela, com mensagem pronta. O cliente chama sem precisar procurar." },
+  { id: "rapido", Icon: Lightning, t: "Abre rápido no celular", b: "Quem espera carregar desiste. Código leve, sem construtor pesando a página." },
+  { id: "google", Icon: GoogleLogo, t: "Encontrado no Google", b: "Título, descrição e uma estrutura que o Google entende." },
+  { id: "caminho", Icon: Path, t: "Um caminho só", b: "Cada seção leva a uma ação: chamar, agendar ou reservar." },
+  { id: "prova", Icon: SealCheck, t: "Prova que convence", b: "Avaliações, fotos reais e depoimentos no ponto em que o cliente decide." },
+  { id: "medidos", Icon: ChartLineUp, t: "Cliques medidos", b: "Você sabe quantas pessoas visitaram e quantas chamaram no WhatsApp." },
 ];
 
 const PLANOS = [
@@ -51,7 +64,7 @@ const PLANOS = [
     off: "−67%",
     prazo: "No ar em 7 dias",
     itens: ["1 página, até 6 seções", "Botão de WhatsApp", "Versão celular + SEO básico", "2 rodadas de ajuste"],
-    cta: "Quero a Vitrine →",
+    cta: "Quero a Vitrine",
     msg: MSG.vitrine,
     destaque: true,
   },
@@ -207,7 +220,7 @@ export default function Home() {
               <a href="#como-funciona">Como funciona</a>
               <a href="#precos">Preços</a>
               <WA msg={MSG.geral} className="menu-wa">
-                Chamar no WhatsApp
+                Entrar em contato
               </WA>
             </div>
           </details>
@@ -235,7 +248,7 @@ export default function Home() {
                 </p>
                 <div className="hero-ctas">
                   <WA msg={MSG.geral} className="btn btn--primary">
-                    Quero meu site →
+                    Quero meu site <span className="arr" aria-hidden="true">→</span>
                   </WA>
                   <WA msg={MSG.raiox} className="btn btn--glass">
                     Pedir raio-x grátis
@@ -243,42 +256,25 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="browser glass" aria-hidden="true">
-                <div className="browser-bar">
-                  <i />
-                  <i />
-                  <i />
-                  <span className="pixel">seunegocio.com.br</span>
-                </div>
-                <div className="browser-page">
-                  <div className="browser-nav">
-                    <strong>Seu Negócio</strong>
-                    <span>Serviços · Sobre · Contato</span>
-                  </div>
-                  <span className="tag tag--cobalto">Seu serviço aqui</span>
-                  <p className="browser-title">A sua marca, do seu jeito.</p>
-                  <p className="browser-text">Tudo o que o cliente precisa saber, num link só.</p>
-                  <span className="browser-btn">Chamar no WhatsApp</span>
-                </div>
-              </div>
+              <HeroWork />
             </div>
           </div>
         </div>
       </header>
 
       <main>
+        <div id="depois-do-hero" className="hero-end" aria-hidden="true" />
         {/* 02 A DOR */}
         <section className="section section--ink section--screen" data-stack aria-labelledby="dor-title">
           <div className="orb orb--cobalt" aria-hidden="true" />
           <div className="wrap">
-            <span className="tag">O problema</span>
             <h2 id="dor-title" className="h-statement" data-reveal>
               Você explica o que faz toda semana no direct. <span className="accent">Um site explicaria sozinho.</span>
             </h2>
             <div className="grid-3">
               {DORES.map((d) => (
-                <article key={d.n} className="card-glass" data-reveal>
-                  <span className="pixel num">{d.n}</span>
+                <article key={d.t} className="card-glass" data-reveal>
+                  <d.Icon className="card-icon" size={28} weight="light" aria-hidden="true" />
                   <h3>{d.t}</h3>
                   <p>{d.b}</p>
                 </article>
@@ -290,7 +286,6 @@ export default function Home() {
         {/* 03 TRABALHOS */}
         <section className="section section--light section--screen" id="trabalhos" data-stack aria-labelledby="trab-title">
           <div className="wrap">
-            <span className="tag tag--cobalto">Portfólio</span>
             <div className="split-head">
               <h2 id="trab-title" className="h-display">
                 Sites <span className="accent-cobalt">no ar.</span>
@@ -344,22 +339,27 @@ export default function Home() {
         {/* 05 FEITO PRA VENDER */}
         <section className="section section--light section--screen" data-stack aria-labelledby="fv-title">
           <div className="wrap">
-            <span className="tag tag--cobalto">Feito pra vender</span>
             <div className="split-head">
               <h2 id="fv-title" className="h-display h-display--md">
                 Bonito é o mínimo. <span className="accent-cobalt">Seu site tem que vender.</span>
               </h2>
 
             </div>
-            <div className="features">
-              {RECURSOS.map(([n, t, b, curto]) => (
-                <article key={n} className="feature" data-reveal>
-                  <span className="pixel num">{n}</span>
+            <div className="bento">
+              {RECURSOS.map(({ id, Icon, t, b }) => (
+                <article key={id} className={`bento-item bento-item--${id}`} data-reveal>
+                  <Icon className="bento-icon" size={id === "whats" ? 36 : 28} weight="light" aria-hidden="true" />
                   <h3>{t}</h3>
-                  <p>
-                    <span className="only-desk">{b}</span>
-                    <span className="only-mob">{curto}</span>
-                  </p>
+                  <p>{b}</p>
+                  {id === "whats" && (
+                    <div className="bento-chat" aria-hidden="true">
+                      <span className="bento-bubble">Oi! Vi o site e quero agendar um horário.</span>
+                      <span className="bento-wa">
+                        <WhatsappLogo size={18} weight="fill" />
+                        Chamar no WhatsApp
+                      </span>
+                    </div>
+                  )}
                 </article>
               ))}
             </div>
@@ -372,7 +372,6 @@ export default function Home() {
           <div className="wrap">
             <div className="split-head">
               <div className="head-stack">
-                <span className="tag">Preços</span>
                 <h2 id="precos-title" className="h-display h-display--md">
                   Quanto custa? <span className="accent">Tá aqui.</span>
                 </h2>
@@ -412,6 +411,11 @@ export default function Home() {
                   </div>
                   <WA msg={p.msg} className={`btn ${p.destaque ? "btn--primary" : "btn--glass"} btn--block`}>
                     {p.cta}
+                    {p.destaque && (
+                      <span className="arr" aria-hidden="true">
+                        →
+                      </span>
+                    )}
                   </WA>
                 </article>
               ))}
@@ -466,10 +470,13 @@ export default function Home() {
             </h2>
             <div className="faq">
               {FAQ.map(([q, a]) => (
-                <div key={q} className="faq-item">
-                  <h3>{q}</h3>
+                <details key={q} className="faq-item">
+                  <summary>
+                    <h3>{q}</h3>
+                    <Plus className="faq-plus" size={20} weight="regular" aria-hidden="true" />
+                  </summary>
                   <p>{a}</p>
-                </div>
+                </details>
               ))}
             </div>
           </div>
@@ -479,13 +486,12 @@ export default function Home() {
         <section className="section section--cobalt center final section--screen" id="contato" aria-labelledby="final-title">
           <div className="orb orb--orange orb--top" aria-hidden="true" />
           <div className="wrap">
-            <span className="tag">Vamos conversar</span>
             <h2 id="final-title" className="h-display">
               Vamos colocar seu <span className="soft">negócio no ar?</span>
             </h2>
             <p className="lead lead--mist">Me conta do seu negócio pelo WhatsApp e eu te mostro o caminho.</p>
             <WA msg={MSG.geral} className="btn btn--primary btn--lg">
-              Entrar em contato →
+              Entrar em contato <span className="arr" aria-hidden="true">→</span>
             </WA>
           </div>
         </section>
